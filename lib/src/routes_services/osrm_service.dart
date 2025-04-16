@@ -16,6 +16,8 @@ class OSRMRoutingService extends RoutingService with OSRMHelper {
 
   Future<OSRMRoad> getOSRMRoad(OSRMRequest request) async {
     final urlOption = request.encodeHeader();
+    print(dio.options.baseUrl + urlOption);
+    print('dio.options.baseUrl + urlOption');
     final response = await dio.get(dio.options.baseUrl + urlOption);
     final Map<String, dynamic> responseJson = Map.from(response.data);
     if (response.statusCode != null && response.statusCode! > 299 ||
